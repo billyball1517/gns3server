@@ -23,4 +23,4 @@ addgroup user qemu
 
 libvirtd > /dev/null &
 
-exec /usr/sbin/gosu user "$@"
+exec /usr/bin/gosu user "$@"
