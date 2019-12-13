@@ -1,6 +1,7 @@
 FROM docker:dind
 
 RUN apk add --update --upgrade --no-cache \
+    bash \
     python3-dev \
     gcc \
     musl-dev \
