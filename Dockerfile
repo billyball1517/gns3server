@@ -13,8 +13,8 @@ RUN apk add --update --upgrade --no-cache \
     qemu-img \
     qemu-system-x86_64 \
     && apk add --no-cache gosu --repository=http://dl-cdn.alpinelinux.org/alpine/edge/testing \
-    && pip3 install --upgrade pip \
-    && pip3 install gns3-server
+    && pip3 install --no-cache-dir --upgrade pip \
+    && pip3 install --no-cache-dir gns3-server
     
 COPY entrypoint.sh /usr/local/bin/entrypoint.sh
 RUN chmod +x /usr/local/bin/entrypoint.sh
