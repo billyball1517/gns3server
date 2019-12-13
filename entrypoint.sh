@@ -21,6 +21,7 @@ addgroup user external-kvm
 addgroup user libvirt
 addgroup user qemu
 
+dockerd > /dev/null &
 libvirtd > /dev/null &
 
 exec /usr/bin/gosu user "$@"
