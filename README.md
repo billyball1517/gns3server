@@ -3,7 +3,7 @@
 
 NOTES:
 
-- This image does not support nested docker containers or IOU images. QEMU/KVM only!
+- This image supports both QEMU/KVM Virtual Machines and Docker Containers.
 - This image is only the "server" component of GNS3, for the GUI component, I recommend pip3 (ie. just run: `sudo pip3 install sip pyqt5 gns3-gui`), more info here: https://docs.gns3.com/1QXVIihk7dsOL7Xr7Bmz4zRzTsJ02wklfImGuHwTlaA4/index.html#h.xo8m7q5xitv6
 
 The container installs gns3-server, creates a dummy "user" account, mounts the dummy user /home folder to the specified local folder, and runs the server as that user.
