@@ -8,15 +8,19 @@ USER_ID=${LOCAL_USER_ID:-9001}
 GROUP_ID=${LOCAL_GROUP_ID:-9001}
 
 echo "Starting with UID : $USER_ID"
-useradd -m -s /usr/sbin/nologin -u $USER_ID -o user
+adduser -D -u $USER_ID user
 export HOME=/home/user
 
-groupadd -g $GROUP_ID -o group
+addgroup docker
+chown -R root:docker /run/docker*
 
-usermod -aG ubridge user
-usermod -aG libvirt user
-usermod -aG group user
+addgroup -g $GROUP_ID external-kvm
 
-service libvirtd start
+addgroup user docker
+addgroup user external-kvm
+addgroup user libvirt
+addgroup user qemu
+
+libvirtd > /dev/null &
 
 exec /usr/sbin/gosu user "$@"
