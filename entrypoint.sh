@@ -11,9 +11,6 @@ echo "Starting with UID : $USER_ID"
 adduser -D -u $USER_ID user
 export HOME=/home/user
 
-dockerd > /dev/null &
-libvirtd > /dev/null &
-
 addgroup docker
 chown -R root:docker /run/docker*
 
@@ -23,5 +20,8 @@ addgroup user docker
 addgroup user external-kvm
 addgroup user libvirt
 addgroup user qemu
+
+dockerd > /dev/null &
+libvirtd > /dev/null &
 
 exec /usr/bin/gosu user "$@"
